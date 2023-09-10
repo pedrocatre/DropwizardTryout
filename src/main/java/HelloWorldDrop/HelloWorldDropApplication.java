@@ -4,6 +4,7 @@ import HelloWorldDrop.resources.HelloWorldResource;
 import io.dropwizard.core.Application;
 import io.dropwizard.core.setup.Bootstrap;
 import io.dropwizard.core.setup.Environment;
+import ru.vyarus.dropwizard.guice.GuiceBundle;
 
 public class HelloWorldDropApplication extends Application<HelloWorldDropConfiguration> {
 
@@ -19,6 +20,9 @@ public class HelloWorldDropApplication extends Application<HelloWorldDropConfigu
     @Override
     public void initialize(final Bootstrap<HelloWorldDropConfiguration> bootstrap) {
         // TODO: application initialization
+        bootstrap.addBundle(GuiceBundle.builder()
+                .enableAutoConfig()
+                .build());
 
     }
 
