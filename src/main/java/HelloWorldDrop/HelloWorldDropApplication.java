@@ -42,6 +42,8 @@ public class HelloWorldDropApplication extends Application<HelloWorldDropConfigu
             }
         });
 
+        bootstrap.addBundle(hibernate);
+
     }
 
     @Override
@@ -50,6 +52,8 @@ public class HelloWorldDropApplication extends Application<HelloWorldDropConfigu
         // TODO: implement application
         environment.jersey().register(new HelloWorldResource());
 
+        final PersonDAO dao = new PersonDAO(hibernate.getSessionFactory());
+        environment.jersey().register(new UserResource(dao));
 //        final JdbiFactory factory = new JdbiFactory();
 //        final Jdbi jdbi = factory.build(environment, config.getDataSourceFactory(), "postgresql");
 //        environment.jersey().register(new UserResource(jdbi));

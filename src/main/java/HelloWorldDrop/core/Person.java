@@ -7,8 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
+
 import java.util.Objects;
 
 @Entity
@@ -29,8 +28,6 @@ public class Person {
     private String jobTitle;
 
     @Column(name = "yearBorn")
-    @Min(value = 0)
-    @Max(value = 9999)
     private int yearBorn;
 
     public Person() {
